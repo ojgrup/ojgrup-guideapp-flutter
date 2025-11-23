@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // Sesuaikan path import model, data, dan detail screen
 import 'models/wisata.dart'; 
 import 'data/dummy_data.dart';
+import 'theme/app_colors.dart';
 import 'screens/detail_screen.dart'; 
 
 class DashboardPage extends StatelessWidget {
