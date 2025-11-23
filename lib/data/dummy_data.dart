@@ -4,18 +4,18 @@ final List<Wisata> daftarWisata = [
   Wisata(
     id: 'w1',
     nama: 'Gunung Rinjani',
-    lokasi: 'Sembalun Lawang, Kec. Sembalun, Kabupaten Lombok Timur, NTB, Indonesia',
+    lokasi: 'Sembalun Lawang',
     deskripsiSingkat: 'Candi Buddha terbesar di dunia dan warisan budaya yang menakjubkan.',
     deskripsiLengkap: 'Candi Borobudur adalah candi Buddha yang terletak di Magelang, Jawa Tengah. Candi ini merupakan salah satu monumen Buddha terbesar di dunia, dibangun pada abad ke-8 dan ke-9 Masehi oleh dinasti Syailendra. Tempat ini menawarkan pemandangan matahari terbit yang spektakuler.',
-    urlGambar: 'https://ak-d.tripcdn.com/images/100r1f000001gon3f82F1_W_750_0_Q70.webp?proc=source%2ftrip&proc=source%2ftrip',
+    urlGambar: 'https://raw.githubusercontent.com/ojgrup/ojgrup-guideapp-flutter/master/assets/images/rinjani.png',
   ),
   Wisata(
     id: 'w2',
     nama: 'Bukit Selong',
-    lokasi: 'Sembalun Lawang, Kec. Sembalun, Kabupaten Lombok Timur, NTB, indonesia',
+    lokasi: 'Sembalun Lawang',
     deskripsiSingkat: 'Surga bawah laut dengan keanekaragaman hayati laut terkaya di dunia.',
     deskripsiLengkap: 'Raja Ampat merupakan kepulauan di Papua Barat Daya yang sangat terkenal dengan keindahan bawah lautnya. Terdiri dari empat pulau besar: Waigeo, Batanta, Salawati, dan Misool. Tempat ideal untuk menyelam dan snorkeling.',
-    urlGambar: 'https://ak-d.tripcdn.com/images/0HJ5a12000gmoj8zd0DB6_W_750_0_Q70.webp',
+    urlGambar: 'https://raw.githubusercontent.com/ojgrup/ojgrup-guideapp-flutter/master/assets/images/selong.png',
   ),
   Wisata(
     id: 'w3',
