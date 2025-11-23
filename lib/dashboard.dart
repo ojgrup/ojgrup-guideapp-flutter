@@ -1,129 +1,95 @@
 import 'package:flutter/material.dart';
+// Sesuaikan path import model dan data
+import 'models/wisata.dart'; 
+import 'data/dummy_data.dart';
 
-class DashboardPage extends StatefulWidget {
+class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Destinasi Wisata 🗺️'),
+      ),
+      // Menggunakan ListView.builder untuk menampilkan daftar data
+      body: ListView.builder(
+        itemCount: daftarWisata.length, 
+        itemBuilder: (context, index) {
+          final wisata = daftarWisata[index];
+          // Menggunakan widget WisataItem untuk tampilan kartu
+          return WisataItem(wisata: wisata);
+        },
+      ),
+    );
+  }
 }
 
-class _DashboardPageState extends State<DashboardPage> {
-  List<Map<String, dynamic>> People = [
-    {
-      "name": "Expert Plumbing",
-      "image": "assets/images/Robin.png",
-      "price": "\$35",
-      "review": "⭐ 4.4 (1.800 reviews)",
-      "job": "Plumber",
-    },
-    {
-      "name": "Electrical Service",
-      "image": "assets/images/Sunday.png",
-      "price": "\$45",
-      "review": "⭐ 4.3 (900 reviews)",
-      "job": "Electrician",
-    },
-    {
-      "name": "Deep Home Cleaning",
-      "image": "assets/images/M7.png",
-      "price": "\$30",
-      "review": "⭐ 4.7 (1.500 reviews)",
-      "job": "Mason",
-    },
-  ];
+// --- Widget WisataItem (Tampilan Kartu per Item) ---
+
+class WisataItem extends StatelessWidget {
+  final Wisata wisata;
+
+  const WisataItem({
+    required this.wisata,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // Memberi warna latar belakang yang membedakan dengan header.
-    // Misal, abu-abu muda.
-    return Scaffold(
-      backgroundColor: Colors.grey[50], 
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // --- HEADER KUSTOM (APP BAR) YANG TIDAK TRANSPARAN ---
-            Container(
-              // INI ADALAH PERBAIKAN: Memberikan warna latar belakang solid
-              color: Colors.white, 
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              // Tambahkan SafeArea agar konten tidak tertutup status bar
-              child: SafeArea( 
-                bottom: false, // Hanya perlu aman di bagian atas
-                child: Row(
-                  children: [
-                    Icon(Icons.account_circle, size: 40),
-                    SizedBox(width: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Hallo ✨"),
-                        Text("Dennis Dwi Musti"),
-                      ],
+    return Card(
+      elevation: 5,
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: InkWell( // InkWell memberikan efek sentuhan
+        onTap: () {
+          // TODO: Di sini kita akan menempatkan navigasi ke halaman detail!
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Anda menekan ${wisata.nama}')),
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: <Widget>[
+              // Gambar Wisata
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  wisata.urlGambar,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Detail Teks
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      wisata.nama,
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                    Spacer(),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Icon(Icons.notifications, size: 30),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Lokasi: ${wisata.lokasi}',
+                      style: const TextStyle(fontSize: 14, color: Colors.black54),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      wisata.deskripsiSingkat,
+                      maxLines: 2, 
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
               ),
-            ),
-            // --- AKHIR HEADER KUSTOM ---
-
-            SizedBox(height: 20),
-
-            // Lanjutkan dengan Search Bar dan konten lainnya...
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search For Any Service",
-                          suffixIcon: Icon(Icons.search),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(Icons.candlestick_chart, size: 30),
-                  ),
-                ],
-              ),
-            ),
-
-            SizedBox(height: 20),
-
-            // Konten lainnya dihilangkan untuk menjaga fokus, tetapi asumsikan kode sebelumnya dilanjutkan di sini
-            
-            // ... (Lanjutan kode banner, kategori, dan list popular near you)
-            
-            // Catatan: Jika Anda menginginkan header ini tetap di atas (Sticky AppBar),
-            // Anda harus memindahkannya ke properti 'appBar' pada Scaffold.
-            // Namun, karena Anda membuatnya kustom, solusi di atas adalah yang paling sederhana.
-          ],
+            ],
+          ),
         ),
       ),
     );
-  } 
+  }
 }
