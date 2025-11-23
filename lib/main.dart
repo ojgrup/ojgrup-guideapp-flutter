@@ -1,4 +1,4 @@
-import 'package:app_dasar/dashboard.dart';
+import 'package:app_dasar/dashboard.dart'; // Asumsi impor ini benar
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Panduan Wisata', // Tambahkan title
       debugShowCheckedModeBanner: false,
-      home: const DashboardPage(),
+      theme: ThemeData( // Tambahkan tema dasar
+        primarySwatch: Colors.teal,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      // DashboardPage adalah halaman utama aplikasi
+      home: const DashboardPage(), 
     );
   }
 }
