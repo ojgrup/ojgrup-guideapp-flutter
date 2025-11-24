@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'screens/splash_screen.dart'; 
-import 'theme/app_colors.dart'; // <<< WAJIB ADA
-import 'dashboard.dart'; // Tetap butuh untuk navigasi
+// import 'screens/splash_screen.dart'; // <--- DIKOMENTARI
+import 'theme/app_colors.dart'; 
+import 'dashboard.dart'; 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); 
@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
           elevation: 0, 
         ),
       ),
-      // --- Titik Masuk Utama ---
-      home: const SplashScreen(), 
+      // --- Titik Masuk Utama LANGSUNG KE DASHBOARD ---
+      home: const DashboardPage(), // <--- GANTI DI SINI
     );
   }
 }
