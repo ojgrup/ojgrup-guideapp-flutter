@@ -7,7 +7,7 @@ final List<Wisata> daftarWisata = [
     lokasi: 'Sembalun Lawang',
     deskripsiSingkat: 'Candi Buddha terbesar di dunia dan warisan budaya yang menakjubkan.',
     deskripsiLengkap: 'Candi Borobudur adalah candi Buddha yang terletak di Magelang, Jawa Tengah. Candi ini merupakan salah satu monumen Buddha terbesar di dunia, dibangun pada abad ke-8 dan ke-9 Masehi oleh dinasti Syailendra. Tempat ini menawarkan pemandangan matahari terbit yang spektakuler.',
-    urlGambar: 'https://raw.githubusercontent.com/ojgrup/ojgrup-guideapp-flutter/master/assets/images/rinjani.png',
+    urlGambar: 'assets/images/rinjani.png',
   ),
   Wisata(
     id: 'w2',
