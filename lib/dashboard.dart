@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-// Sesuaikan path import model, data, dan detail screen
+// Sesuaikan path import model, data, detail screen, dan colors
 import 'models/wisata.dart'; 
 import 'data/dummy_data.dart';
 import 'theme/app_colors.dart';
 import 'screens/detail_screen.dart'; 
+
+// ===================================================================
+// DashboardPage: StatelessWidget (Tanpa Fitur Pencarian)
+// ===================================================================
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -65,20 +69,12 @@ class WisataItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
                 child: Hero(
                   tag: wisata.id, // Tag unik untuk animasi transisi ke DetailScreen
-                  child: Image.network(
+                  child: Image.asset( // <--- PERUBAHAN KRITIS: Menggunakan Image.asset
                     wisata.urlGambar,
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,
-                    // Tambahkan loading builder agar lebih stabil saat memuat gambar
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return const SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
-                      );
-                    },
+                    // Error builder dipertahankan untuk debugging jika aset tidak ditemukan
                     errorBuilder: (context, error, stackTrace) => const SizedBox(
                       width: 100,
                       height: 100,
